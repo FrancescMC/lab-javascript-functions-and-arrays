@@ -1,12 +1,12 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers(a, b) {
-  if (a > b) {
-    return a;
+function maxOfTwoNumbers(num1, num2) {
+  if (num1 > num2) {
+    return num1;
   }
-  if ((a = b)) {
-    return a;
+  if ((num1 = num2)) {
+    return num1;
   } else {
-    return b;
+    return num2;
   }
 }
 
@@ -20,7 +20,6 @@ const words = [
   "orchard",
   "crackpot",
 ];
-const words1 = [];
 function findLongestWord(words) {
   let longestWord = "";
   for (let i = 0; i < words.length; i++) {
@@ -28,7 +27,7 @@ function findLongestWord(words) {
       longestWord = words[i];
     }
   }
-  if (words.length === 0) {
+  if (words.length == 0) {
     longestWord = null;
   }
   return longestWord;
@@ -37,10 +36,10 @@ function findLongestWord(words) {
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers(numbers) {
+function sumNumbers(numToSum) {
   let sumOfNum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sumOfNum += numbers[i];
+  for (let i = 0; i < numToSum.length; i++) {
+    sumOfNum += numToSum[i];
   }
   return sumOfNum;
 }
@@ -58,7 +57,7 @@ function sum(mixedArr) {
     } else if (typeof mixedArr[i] === "number") {
       sumOfArr += mixedArr[i];
     } else if (typeof mixedArr[i] === "array" || "object") {
-      sumOfArr = "error";
+      sumOfArr = error;
       break;
     }
   }
@@ -69,7 +68,16 @@ function sum(mixedArr) {
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersAvg) {
+  let sumAvgNum = 0;
+  for (let i = 0; i < numbersAvg.length; i++) {
+    sumAvgNum += numbersAvg[i];
+  }
+  if (numbersAvg.length === 0) {
+    return null;
+  }
+  return (sumAvgNum /= numbersAvg.length);
+}
 
 // Level 2: Array of strings
 const wordsArr = [
@@ -85,10 +93,23 @@ const wordsArr = [
   "palace",
 ];
 
-function averageWordLength() {}
+function averageWordLength(wordsArr) {
+  let sumAvgword = 0;
+  for (let i = 0; i < wordsArr.length; i++) {
+    sumAvgword += wordsArr[i].length;
+  }
+  if (wordsArr.length === 0) {
+    return null;
+  }
+  return (sumAvgword /= wordsArr.length);
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+const mixedArr2 = [6, 12, "miami", 1, true, "barca", "200", "lisboa", 8, 10];
+function avg(mixedArr2) {
+  return sum(mixedArr2) / mixedArr2.length;
+}
+console.log(avg(mixedArr2));
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -105,7 +126,12 @@ const wordsUnique = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  let uniqueWords = array.filter((word, index) => {
+    return array.indexOf(word) === index;
+  });
+  return uniqueWords;
+}
 
 // Iteration #6: Find elements
 const wordsFind = [
@@ -119,7 +145,13 @@ const wordsFind = [
   "disobedience",
 ];
 
-function doesWordExist() {}
+function doesWordExist(arrOfWordsToFind, wordToFind) {
+  if (arrOfWordsToFind.includes(wordToFind)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -136,7 +168,15 @@ const wordsCount = [
   "matter",
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  let wordIsRepeated = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === word) {
+      wordIsRepeated++;
+    }
+  }
+  return wordIsRepeated;
+}
 
 // Iteration #8: Bonus
 const matrix = [
@@ -204,7 +244,30 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) {
+  let product = 0;
+  let maxProd = 0;
+
+  for (let i = 0; 1 < array.length; i++) {
+    //columnas
+    for (let j = 0; j < array.length; j++) {
+      //horizontal
+      if (j - 3 >= 0) {
+        product =
+          array[i][j] * array[i][j - 1] * array[i][j - 2] * array[i][j - 3];
+        if (product > maxProd) {
+          maxProd = product;
+        }
+      }
+      //vertical
+      if (i - 3 >= 0) {
+        product =
+          array[i][j] * array[i - 1][j] * array[i - 2][j] * array[i - 3][j];
+        if (product > maxProd) maxProd = product;
+      }
+    }
+  }
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
